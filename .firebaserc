@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ng-movie-booking-app": {
+      "hosting": {
+        "ng-ngrx-login-signup-fire": [
+          "ng-movie-booking-app"
+        ]
+      }
+    }
+  }
+}

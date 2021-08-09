@@ -1,0 +1,89 @@
+<div class="container">
+  <span>
+    <img src="assets/logo.png" alt="logo" class="logo" />
+    <h3 class="container__title">Register</h3>
+  </span>
+
+  <form
+    [formGroup]="signupForm"
+    class="container__form"
+    (ngSubmit)="onSignup()"
+  >
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      formControlName="email"
+      placeholder="Email"
+      autocomplete="off"
+    />
+    <span
+      class="error"
+      *ngIf="
+        signupForm.get('email')!.touched &&
+        signupForm.get('email')!.hasError('required')
+      "
+      >Enter email *
+    </span>
+    <span
+      class="error"
+      *ngIf="
+        signupForm.get('email')!.touched &&
+        signupForm.get('email')!.hasError('pattern')
+      "
+      >Enter the correct email *</span
+    >
+    <label class="error">{{ errorMessage }}</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+      placeholder="Password"
+      trim
+    />
+    <span
+      class="error"
+      *ngIf="
+        signupForm.get('password')!.touched &&
+        signupForm.get('password')!.hasError('required')
+      "
+      >Enter password *
+    </span>
+    <span
+      class="error"
+      *ngIf="
+        signupForm.get('password')!.hasError('minlength') ||
+        signupForm.get('password')!.hasError('maxlength')
+      "
+      >Enter the correct password *</span
+    >
+    <label class="error">{{ errorMessage }}</label>
+    <button
+      class="btn btn-primary my-3"
+      type="submit"
+      [disabled]="!signupForm.valid"
+    >
+      Register
+    </button>
+  </form>
+  <div class="register">
+    <a
+      class="register__title"
+      href="#"
+      [routerLink]="['/login']"
+      routerLinkActive="router-link-active"
+      >Login Here</a
+    >
+  </div>
+  <!-- <div class="signin-with-google">
+    <div class="content-wrapper">
+      <div class="logo-wrapper">
+        <img src="assets/g-logo.png" alt="google-icon" />
+      </div>
+      <div class="text-container">
+        <span (click)="tryGoogleLogin()">Register with Google</span>
+      </div>
+    </div>
+  </div> -->
+</div>
